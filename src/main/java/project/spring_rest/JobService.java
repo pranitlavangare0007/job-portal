@@ -1,0 +1,47 @@
+package project.spring_rest;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
+
+@Service
+public class JobService {
+    @Autowired
+    public Repo repo;
+
+    //method to return all JobPosts
+    public List<JobPost> getAllJobs() {
+        return repo.findAll();
+
+
+    }
+
+
+    // method to add a jobPost
+    public void addJobPost(JobPost jobPost) {
+        repo.save(jobPost);
+
+    }
+
+
+    public Optional<JobPost> getJob(int i) {
+
+        return repo.findById(i);
+    }
+
+    public void updateJob(JobPost jobPost) {
+        repo.save(jobPost);
+    }
+
+    public void deleteJob(int postId) {
+
+        repo.deleteById(postId);
+    }
+
+    public List<JobPost> getJobsByKey(String key) {
+
+        return repo.findByPostProfileContainingOrPostDescContaining(key,key);
+    }
+}
