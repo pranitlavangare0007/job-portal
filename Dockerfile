@@ -1,14 +1,27 @@
-# Use Java 21 LTS (recommended for Render)
-FROM eclipse-temurin:21-jdk
+# ===============================
+# Build stage
+# ===============================
+FROM eclipse-temurin:21-jdk AS build
 
-# Set working directory
 WORKDIR /app
 
-# Copy the built jar
-COPY target/*.jar app.jar
+# Copy Maven files
+COPY pom.xml .
+COPY src src
 
-# Expose Spring Boot port
+# Install Maven inside container and build
+RUN apt-get update && apt-get install -y maven
+RUN mvn clean package -DskipTests
+
+# ===============================
+# Runtime stage
+# ===============================
+FROM eclipse-temurin:21-jre
+
+WORKDIR /app
+
+COPY --from=build /app/target/*.jar app.jar
+
 EXPOSE 8080
 
-# Run the application
 ENTRYPOINT ["java", "-jar", "app.jar"]
