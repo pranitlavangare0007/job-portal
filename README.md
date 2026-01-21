@@ -5,6 +5,10 @@ This is the **backend service** for the Job Portal application, built using **Sp
 It provides REST APIs to manage job postings including create, update, delete, search, and list operations.
 
 ---
+## 🌐 Live Website
+
+https://697081526e097906f144be90--dazzling-sable-e12539.netlify.app/
+
 
 ## 🌐 Live API
 
