@@ -35,7 +35,7 @@ public class AuthController {
         String token = jwtService.generateToken(email, "USER");
 
         response.sendRedirect(
-                "http://localhost:5173/oauth-callback?token=" + token
+                "https://697640286178e3217243178c--job-portal-frontend-by-pl.netlify.app" + token
         );
     }
 
