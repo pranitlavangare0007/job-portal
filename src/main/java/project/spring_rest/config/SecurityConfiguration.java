@@ -323,6 +323,9 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.*;
 import project.spring_rest.filters.JwtFilter;
+
+import java.util.List;
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration {
@@ -377,7 +380,11 @@ public class SecurityConfiguration {
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration c = new CorsConfiguration();
         c.setAllowCredentials(true);
-        c.addAllowedOrigin("http://localhost:5173");
+        c.setAllowedOriginPatterns(List.of(
+                "http://localhost:5173",
+                "https://job-portal-frontend-by-pl.netlify.app",
+                "https://*.netlify.app"
+        ));
         c.addAllowedHeader("*");
         c.addAllowedMethod("*");
 
