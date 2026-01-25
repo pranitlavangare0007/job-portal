@@ -1,13 +1,19 @@
-package project.spring_rest;
+package project.spring_rest.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import project.spring_rest.models.JobPost;
+import project.spring_rest.models.Users;
+import project.spring_rest.services.JobService;
+import project.spring_rest.services.UserService;
 
 import java.util.List;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin("*")
+
 public class JobController {
 
     @Autowired
@@ -18,16 +24,20 @@ public class JobController {
         return services.getAllJobs();
     }
 
+
+
     @GetMapping("/jobs/keyword/{keyword}")
     public List<JobPost> getJobsByKeyWord(@PathVariable("keyword") String key){
 
         return services.getJobsByKey(key);
     }
 
+
     @GetMapping("/job/{postId}")
     public Optional<JobPost> getJob(@PathVariable int postId){
         return services.getJob(postId);
     }
+
 
     @PostMapping("/job")
     public Optional<JobPost> addJobs(@RequestBody JobPost jobPost){

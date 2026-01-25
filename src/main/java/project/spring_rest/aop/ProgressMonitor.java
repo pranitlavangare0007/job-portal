@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 @Aspect
 public class ProgressMonitor {
     private  static final Logger logger= LoggerFactory.getLogger(ProgressMonitor.class);
-    @Around("execution(* project.spring_rest.JobService.*(..))")
+    @Around("execution(* project.spring_rest.services.JobService.*(..))")
     public Object monitor(ProceedingJoinPoint jp) throws Throwable {
 
         long start=System.currentTimeMillis();

@@ -1,9 +1,10 @@
-package project.spring_rest;
+package project.spring_rest.models;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.*;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 
@@ -15,7 +16,8 @@ public class JobPost {
 
 
     @Id
-    private int postId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer postId;
     private String postProfile;
     private String postDesc;
     private Integer reqExperience;

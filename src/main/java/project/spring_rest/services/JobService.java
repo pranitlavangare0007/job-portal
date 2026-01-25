@@ -1,7 +1,9 @@
-package project.spring_rest;
+package project.spring_rest.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import project.spring_rest.models.JobPost;
+import project.spring_rest.repositry.Repo;
 
 import java.util.List;
 import java.util.Optional;

@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 public class Aop {
 
     private  static final Logger logger= LoggerFactory.getLogger(Aop.class);
-    @After("execution(* project.spring_rest.JobService.*(..))")
+    @After("execution(* project.spring_rest.services.JobService.*(..))")
     public void  logs(JoinPoint jp){
         logger.info("method called"+" "+jp.getSignature().getName());
     }
