@@ -40,9 +40,9 @@ public class JobController {
 
 
     @PostMapping("/job")
-    public Optional<JobPost> addJobs(@RequestBody JobPost jobPost){
-        services.addJobPost(jobPost);
-        return services.getJob(jobPost.getPostId());
+    public JobPost addJobs(@RequestBody JobPost jobPost){
+
+        return services.addJobPost(jobPost);
     }
     @PutMapping("/job")
     public Optional<JobPost> updateJob(@RequestBody JobPost jobPost){
