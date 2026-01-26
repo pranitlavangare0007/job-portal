@@ -1,4 +1,4 @@
-🚀 Job Portal Backend (Spring Boot + JWT + OAuth2)
+🚀 Job Portal Backend (Spring Boot + JWT + OAuth2) 
 
 A secure, production-ready backend for a Job Portal application built with Spring Boot, featuring:
 
