@@ -1,107 +1,87 @@
-# 🚀 Job Portal Backend (Spring Boot + PostgreSQL)
+🚀 Job Portal Backend (Spring Boot + JWT + OAuth2)
 
-This is the **backend service** for the Job Portal application, built using **Spring Boot**, **PostgreSQL**, and **Docker**, and deployed on **Render**.
+A secure, production-ready backend for a Job Portal application built with Spring Boot, featuring:
 
-It provides REST APIs to manage job postings including create, update, delete, search, and list operations.
+🔐 JWT authentication
 
----
-## 🌐 Live Website
+🌐 Google OAuth2 login
 
-https://697081526e097906f144be90--dazzling-sable-e12539.netlify.app/
+👥 Role-based access (USER / ADMIN)
 
+🗄️ PostgreSQL (Render Cloud DB)
 
-## 🌐 Live API
+🌍 CORS-ready for React frontend
 
-**Base URL**
+☁️ Deployed on Render
 
-https://job-portal-backend-o6do.onrender.com/jobs
+🛠️ Tech Stack
 
-
-**Test Endpoint**
-
-GET /jobs
-
-
----
-
-## 🛠 Tech Stack
-
-- Java 21  
-- Spring Boot 4  
-- Spring Data JPA  
-- Hibernate  
-- PostgreSQL  
-- Docker  
-- Render (Cloud Hosting)
-
----
-
-## 📦 Features
-
-- Create new job post  
-- View all job posts  
-- Search jobs by keyword  
-- Update job post  
-- Delete job post  
-- PostgreSQL database integration  
-- Deployed with Docker on Render  
-
----
+Layer	Technology
+Backend	Spring Boot 3 / Java 21
+Security	Spring Security, JWT, OAuth2
+Database	PostgreSQL (Render)
+ORM	Hibernate / JPA
+Build	Maven
+Deployment	Render
 
 
----
+✨ Features
 
-## 🔗 API Endpoints
+User registration & login
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | /jobs | Get all jobs |
-| GET | /jobs/keyword/{key} | Search jobs |
-| POST | /job | Add new job |
-| PUT | /job | Update job |
-| DELETE | /job/{id} | Delete job |
+BCrypt password hashing
 
----
+JWT token generation & validation
 
-## ⚙️ Environment Variables (Render)
+Google OAuth2 login
 
-Set these in the Render dashboard:
+Automatic JWT creation after OAuth
 
-| Variable | Description |
-|----------|-------------|
-| DB_URL | JDBC URL for PostgreSQL |
-| DB_USER | Database username |
-| DB_PASS | Database password |
+Role-based authorization
 
-**Example**
-DB_URL=jdbc:postgresql://host:5432/dbname?sslmode=require
-DB_USER=your_db_user
-DB_PASS=your_db_password
+Admin-only routes
 
+CORS configuration for frontend
 
----
+REST APIs for jobs & users
 
-## ▶️ Run Locally
+🔐 Authentication Flow
 
-### 1. Clone
+Normal Login
 
-git clone https://github.com/pranitlavangare0007/job-portal.git
-cd job-portal
+POST /login → returns JWT
+Authorization: Bearer <token>
 
-2 Configure Database
+Google OAuth
 
-Update application.properties:
+GET /oauth2/authorization/google
+→ Google Login
+→ /oauth-success
+→ Redirect to frontend with JWT
 
-spring.datasource.url=jdbc:postgresql://localhost:5432/demo
-spring.datasource.username=postgres
-spring.datasource.password=yourpassword
+👥 Roles
+Role	    Access
+USER    	View jobs
+ADMIN	    Create, Edit, Delete jobs
 
-3. Run
-mvn spring-boot:run
+📡 API Endpoints
+Public
+Method	Endpoint
+POST	  /register
+POST	  /login
+GET	    /oauth2/**
+GET     /oauth-success
 
-Server runs at:
+Protected
+Method	 Endpoint
+GET	     /jobs
+POST	   /job
+PUT	     /job/{id}
+DELETE	 /job/{id}
 
-http://localhost:8080
+Admin Only
+Method	Endpoint
+ALL	   /admin/**
 
-
-
+🌍 Live Backend
+https://job-portal-backend-o6do.onrender.com
