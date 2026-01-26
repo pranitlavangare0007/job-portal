@@ -1,13 +1,12 @@
 package project.spring_rest.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+
 import org.springframework.web.bind.annotation.*;
 import project.spring_rest.models.JobPost;
-import project.spring_rest.models.Users;
+
 import project.spring_rest.services.JobService;
-import project.spring_rest.services.UserService;
+
 
 import java.util.List;
 import java.util.Optional;

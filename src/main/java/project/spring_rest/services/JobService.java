@@ -13,23 +13,15 @@ public class JobService {
     @Autowired
     public Repo repo;
 
-    //method to return all JobPosts
     public List<JobPost> getAllJobs() {
         return repo.findAll();
-
-
     }
 
-
-    // method to add a jobPost
     public JobPost addJobPost(JobPost jobPost) {
         return repo.save(jobPost);
-
     }
 
-
     public Optional<JobPost> getJob(int i) {
-
         return repo.findById(i);
     }
 

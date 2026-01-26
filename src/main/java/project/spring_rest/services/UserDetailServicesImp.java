@@ -25,8 +25,6 @@ public class UserDetailServicesImp implements UserDetailsService {
                     .roles(user.getRole())   // 👈 USER / ADMIN
                     .build();
         }
-
-        // Google users not in DB → auto USER
         return User.withUsername(username)
                 .password("{noop}")
                 .roles("USER")

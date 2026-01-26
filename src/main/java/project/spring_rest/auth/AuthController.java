@@ -23,17 +23,13 @@ public class AuthController {
 
         Authentication auth =
                 SecurityContextHolder.getContext().getAuthentication();
-
         if (auth == null) {
             response.sendRedirect("http://localhost:5173/login");
             return;
         }
-
         String email = auth.getName();
 
-        // 🔥 Google users are normal users
         String token = jwtService.generateToken(email, "USER");
-
         response.sendRedirect(
                 "https://job-portal-frontend-by-pl.netlify.app/oauth-callback?token=" + token
         );
